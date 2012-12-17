@@ -1,0 +1,13 @@
+{
+  "name": "west-house-front-end",
+  "description": "West House Project's front-end code.",
+  "version": "0.0.1",
+  "licenses": [{
+    "type": "Attribution-NonCommercial-NoDerivs",
+    "url": "https://raw.github.com/west-house-project/west-house-front-end/master/LICENSE"
+  }],
+  "private": true,
+  "dependencies": {
+    "express": "~3.0.4"
+  }
+}
