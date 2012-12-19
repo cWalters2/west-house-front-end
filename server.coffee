@@ -13,7 +13,8 @@ server.configure ->
   server.use express.bodyParser()
   server.use express.methodOverride()
   server.use require('connect-coffee-script')({
-    src: publicFolder
+    src: path.join __dirname, 'coffee-src'
+    dest: publicFolder
     compile: (str, options) ->
       options.bare = true
       code = CoffeeScript.compile str, options
