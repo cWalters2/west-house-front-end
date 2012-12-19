@@ -21,7 +21,6 @@ server.configure ->
       requireCalls = code.match /require\((\s+)?('[^'\\]*(?:\\.[^'\\]*)*'|"[^"\\]*(?:\\.[^"\\]*)*")(\s+)?\)/g
       requireCalls = requireCalls.map (str) ->
         return (str.match /('[^'\\]*(?:\\.[^'\\]*)*'|"[^"\\]*(?:\\.[^"\\]*)*")/)[0]
-      requireCalls.unshift '"require"'
       code = "define([#{requireCalls.join ', '}], function () {\nvar module = { exports: {} };\n\n#{code}\n\nreturn module.exports;\n});"
       return code
   })

@@ -74,6 +74,7 @@ $ nodemon server.coffee
 ### Check List
 
 * be sure that no build files are in the repository. Update the [.gitignore file](http://gitready.com/beginner/2009/01/19/ignoring-files.html), when necessary.
+* at the top level of `src/coffee`, there should only be an `app` folder.
 
 ### Some Really Minor Details
 
