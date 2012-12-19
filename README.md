@@ -66,7 +66,7 @@ $ nodemon server.coffee
 ### Things to Look Into
 
 * JavaScript
-  * <a href="http://backbonetutorials.com/" target="_blank">Model-View-&lt;anything&gt;</a>
+  * <a href="http://backbonetutorials.com/" target="_blank">Model-View-&lt;anything&gt;</a> (MV*)
   * <a href="http://requirejs.org/docs/whyamd.html" target="_blank">Asynchronous Module Definition (AMD) (a.k.a. how RequireJS loads dependencies)</a>
   * <a href="https://gist.github.com/357981/" target="_blank">Comma-first variable and property declaration</a> (JavaScript coding style used in this project)
   * <a href="http://pkp.sfu.ca/wiki/index.php/JavaScript_coding_conventions" target="_blank">Some JavaScript coding conventions</a>
