@@ -39,7 +39,7 @@ $ coffee server.coffee
 # -> Server listening on port 3000
 ```
 
-However, you get a <a href="https://gist.github.com/4333329" target="_blank">`listen EADDRINUSE`</a>(https://gist.github.com/4333329) error, then you can run the following command.
+However, you get a <a href="https://gist.github.com/4333329" target="_blank">`listen EADDRINUSE`</a> error, then you can run the following command.
 
 ```shell
 $ coffee server.coffee 4000
