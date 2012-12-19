@@ -39,7 +39,7 @@ $ coffee server.coffee
 # -> Server listening on port 3000
 ```
 
-However, you get a [`listen EADDRINUSE`](https://gist.github.com/4333329) error, then you can run the following command.
+However, you get a <a href="https://gist.github.com/4333329" target="_blank">`listen EADDRINUSE`</a>(https://gist.github.com/4333329) error, then you can run the following command.
 
 ```shell
 $ coffee server.coffee 4000
@@ -66,7 +66,7 @@ $ nodemon server.coffee
 ### Things to Look Into
 
 * JavaScript
-  * <a href="http://backbonetutorials.com/" target="_blank">Model-View-<anything></a>
+  * <a href="http://backbonetutorials.com/" target="_blank">Model-View-&lt;anything&gt;</a>
   * <a href="http://requirejs.org/docs/whyamd.html" target="_blank">Asynchronous Module Definition (AMD) (a.k.a. how RequireJS loads dependencies)</a>
   * <a href="https://gist.github.com/357981/" target="_blank">Comma-first variable and property declaration</a> (JavaScript coding style used in this project)
   * <a href="http://pkp.sfu.ca/wiki/index.php/JavaScript_coding_conventions" target="_blank">Some JavaScript coding conventions</a>
