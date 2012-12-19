@@ -71,7 +71,7 @@ $ nodemon server.coffee
   * <a href="https://gist.github.com/357981/" target="_blank">Comma-first variable and property declaration</a> (JavaScript coding style used in this project)
   * <a href="http://pkp.sfu.ca/wiki/index.php/JavaScript_coding_conventions" target="_blank">Some JavaScript coding conventions</a>
 
-### Etiquets
+### Check List
 
 * be sure that no build files are in the repository. Update the [.gitignore file](http://gitready.com/beginner/2009/01/19/ignoring-files.html), when necessary.
 
