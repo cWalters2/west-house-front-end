@@ -63,13 +63,17 @@ $ nodemon server.coffee
 
 ## Development
 
-### Some Things to Look Into
+### Things to Look Into
 
 * JavaScript
   * <a href="http://backbonetutorials.com/" target="_blank">Model-View-<anything></a>
   * <a href="http://requirejs.org/docs/whyamd.html" target="_blank">Asynchronous Module Definition (AMD) (a.k.a. how RequireJS loads dependencies)</a>
   * <a href="https://gist.github.com/357981/" target="_blank">Comma-first variable and property declaration</a> (JavaScript coding style used in this project)
   * <a href="http://pkp.sfu.ca/wiki/index.php/JavaScript_coding_conventions" target="_blank">Some JavaScript coding conventions</a>
+
+### Etiquets
+
+* be sure that no build files are in the repository. Update the [.gitignore file](http://gitready.com/beginner/2009/01/19/ignoring-files.html), when necessary.
 
 ### Some Really Minor Details
 
