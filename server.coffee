@@ -1,31 +1,30 @@
 CoffeeScript = require 'coffee-script'
 express = require 'express'
 path = require 'path'
+connectCommonJsAmd = require 'connect-commonjs-amd'
 
 publicPath = path.resolve '.'
 port = process.argv[2]||3000
 
 server = express()
 
+srcFolder = path.join __dirname, 'src'
 publicFolder = path.join __dirname, 'public'
 
 server.configure ->
   server.use express.bodyParser()
   server.use express.methodOverride()
   server.use require('connect-coffee-script')({
-    src: path.join __dirname, 'src', 'coffee'
+    src: srcFolder
     dest: publicFolder
     compile: (str, options) ->
       options.bare = true
       code = CoffeeScript.compile str, options
-      requireCalls = code.match /require\((\s+)?('[^'\\]*(?:\\.[^'\\]*)*'|"[^"\\]*(?:\\.[^"\\]*)*")(\s+)?\)/g
-      requireCalls = requireCalls.map (str) ->
-        return (str.match /('[^'\\]*(?:\\.[^'\\]*)*'|"[^"\\]*(?:\\.[^"\\]*)*")/)[0]
-      code = "define([#{requireCalls.join ', '}], function () {\nvar module = { exports: {} };\n\n#{code}\n\nreturn module.exports;\n});"
-      return code
+      return connectCommonJsAmd.toCommonJs code
   })
   server.use require('less-middleware')({
-    src: publicFolder
+    src: srcFolder
+    dest: publicFolder
   })
   server.use express.static publicFolder
   server.use require('express-custom-mime-types')({
