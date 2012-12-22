@@ -19,8 +19,7 @@ server.configure ->
     dest: publicFolder
     compile: (str, options) ->
       return connectCommonJsAmd.toCommonJs(
-        CoffeeScript.compile str,
-        { bare: true }
+        CoffeeScript.compile str, { bare: true }
       )
   })
   server.use require('less-middleware')({
