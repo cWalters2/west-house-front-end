@@ -1,5 +1,7 @@
 # West House ALIS Front-End
 
+[![Build Status](https://travis-ci.org/West-House-Project/west-house-front-end.png?branch=development)](https://travis-ci.org/West-House-Project/west-house-front-end)
+
 This is the front-end code of West House's ALIS.
 
 ### Technologies Used
