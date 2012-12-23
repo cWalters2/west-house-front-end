@@ -29,6 +29,9 @@
       ]
       , function () {
         var runner = mocha.run();
+        runner.on('fail', function (test, err) {
+          console.error(test.err.stack);
+        });
       }
     );
     </script>
