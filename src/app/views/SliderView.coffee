@@ -12,11 +12,35 @@ module.exports = class SliderView extends Backbone.View
   _handlePosition: 0
   _$handle: null
   _$track: null
+  _value: 0
 
-  initialize: (@options = {}) ->
-    @options.height = 200 unless @options.height
-    @options.width = 50 unless @options.width
+  initialize: (@_options = {}) ->
+    @_options = _.extend {
+      height: 200
+      width: 50
+      min: 1
+      max: 100
+      initial: 1
+    }, @_options
+
+    @setValue @_options.initial
+
     @render()
+
+    return
+
+  setValue: (value) ->
+    @_value = value
+
+    if @_value < @_options.min
+      @_value = @_options.min
+    else if @_value > @_options.max
+      @_value = @_options.max
+    
+    return
+
+  getValue: ->
+    return @_value
 
   _setHandlePosition: (amount) ->
     assert @_$handle
@@ -36,11 +60,11 @@ module.exports = class SliderView extends Backbone.View
     @_$handle = @_$track.find '.handle'
 
     @_$track.css
-      width: "#{@options.width}px"
-      height: "#{@options.height}px"
+      width: "#{@_options.width}px"
+      height: "#{@_options.height}px"
 
     @_$handle.css
-      width: "#{@options.width}px"
+      width: "#{@_options.width}px"
       height: "50px"
       top: "#{@_handlePosition}px"
 

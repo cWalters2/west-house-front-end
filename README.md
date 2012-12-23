@@ -4,13 +4,13 @@ This is the front-end code of West House's ALIS.
 
 ### Technologies Used
 
-* [Node.js](http://nodejs.org/)
-* [CoffeeScript](http://coffeescript.org/)
-* [Express](http://expressjs.com/)
-* [LESS](http://lesscss.org/)
-* [jQuery](http://jquery.com/)
-* [Backbone.js](http://backbonejs.org/)
-* [Underscore.js](http://underscorejs.org/)
+* <a href="http://nodejs.org/" target="_blank">Node.js</a>
+* <a href="http://coffeescript.org/ target="_blank">CoffeeScript</a>
+* <a href="http://expressjs.com/" target="_blank">Express</a>
+* <a href="http://lesscss.org/" target="_blank">LESS</a>
+* <a href="http://jquery.com/" target="_blank">jQuery</a>
+* <a href="http://backbonejs.org/" target="_blank">[Backbone.js](http://backbonejs.org/)
+* <a href="http://underscorejs.org" target="_blank">Underscore.js</a>
 * a plethora of front-end libraries and plugins. Just take a look at `public/index.html`, and look at the second script tag. You'll see the plugins and libraries used in the `require.config` call.
 * a plethora of middleware for the Express framework. Just take a look at `package.json`'s `"dependencies"` property, and you'll see the list.
 
@@ -70,6 +70,7 @@ $ nodemon server.coffee
   * <a href="http://requirejs.org/docs/whyamd.html" target="_blank">Asynchronous Module Definition (AMD)</a> (a.k.a. how RequireJS loads dependencies)
   * <a href="https://gist.github.com/357981/" target="_blank">Comma-first variable and property declaration</a> (JavaScript coding style used in this project)
   * <a href="http://pkp.sfu.ca/wiki/index.php/JavaScript_coding_conventions" target="_blank">Some JavaScript coding conventions</a>
+* <a href="https://github.com/polarmobile/coffeescript-style-guide#coffeescript-style-guide" target="_blank">CoffeeScript style guide</a>
 
 ### Check List
 
