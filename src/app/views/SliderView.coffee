@@ -1,6 +1,6 @@
 require 'css!styles/views/SliderView.css'
 
-template = require 'text!templates/views/SliderView.underscore'
+template = require 'text!templates/views/BaseTrackBarView.underscore'
 _ = require 'underscore'
 Backbone = require 'backbone'
 assert = require 'assert'
@@ -15,6 +15,7 @@ module.exports = class SliderView extends Backbone.View
   _$track: null
   _value: 0
 
+  # TODO: document how Backbone.js' initialize method works.
   ###
   This method is called whenever a new instance of the SliderView class is
   initialized.

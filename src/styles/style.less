@@ -1,1 +1,14 @@
 @import "lib/normalize";
+
+// TODO: remove this if we were to ever add Twitter's Bootstrap.
+.clearfix {
+  &:before { content: ''; display: block; }
+  &:after { content: ''; display: table; clear: both; }
+  zoom: 1;
+}
+
+// TODO: check to see if this is even necessary.
+.column {
+  float: left;
+  clear: right;
+}

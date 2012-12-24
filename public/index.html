@@ -21,6 +21,7 @@
       }
     });
     require(["app/main"], function () {
+      // TODO: move away from this redundant require call.
       var main = require('app/main');
       main.init();
     });
