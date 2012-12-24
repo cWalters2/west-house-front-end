@@ -6,7 +6,6 @@ $ = require 'jquery'
 
 $ ->
   $mainView = $ '#main-view'
-  console.log $mainView
 
   $parent = $ document.createElement 'div'
   $parent.addClass 'clearfix'
