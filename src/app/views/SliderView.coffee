@@ -4,6 +4,7 @@ template = require 'text!templates/views/SliderView.underscore'
 _ = require 'underscore'
 Backbone = require 'backbone'
 assert = require 'assert'
+helpers = require 'app/helpers'
 
 module.exports = class SliderView extends Backbone.View
   className: 'SliderView'
@@ -14,6 +15,18 @@ module.exports = class SliderView extends Backbone.View
   _$track: null
   _value: 0
 
+  ###
+  This method is called whenever a new instance of the SliderView class is
+  initialized.
+
+  @params 
+    _options: an object, with the following optional properties
+      - height: a number reprsenting the physical height of the slider
+      - width: a number reprsenting the physical width of the slider
+      - min: a number representing the minimum value that the slider can accept.
+      - max: a number representing the maximum value that the slider can accept.
+      - initial: the initial value to set the slider to.
+  ###
   initialize: (@_options = {}) ->
     @_options = _.extend {
       height: 200
@@ -42,14 +55,43 @@ module.exports = class SliderView extends Backbone.View
   getValue: ->
     return @_value
 
+  _getTrackHeight: ->
+    return @_$track.height()
+
+  _getHandleHeight: ->
+    return @_$handle.height()
+
+  _synthesizeHandlePosition: (amount) ->
+    if not helpers.isValidNumber amount
+      throw new Error "Amount should be anumber"
+
+    height = @_getTrackHeight() - @_getHandleHeight()
+    assert (helpers.isValidNumber height), "The height should be a number."
+
+    max = @_options.max - @_options.min
+    assert (helpers.isValidNumber max), "The max should be a number"
+
+    percentage = amount / height
+
+    handlePos = Math.round(percentage * max) / max
+
+    retval = Math.round(handlePos * height)
+
+    return retval
+
   _setHandlePosition: (amount) ->
     assert @_$handle
     assert @_$track
 
     if amount < 0
       amount = 0
-    else if amount > @_$track.height() - @_$handle.height()
-      amount = @_$track.height() - @_$handle.height()
+    else if amount > @_getTrackHeight() - @_getHandleHeight()
+      amount = @_getTrackHeight() - @_getHandleHeight()
+
+    assert (helpers.isValidNumber amount), "The amount should be a number."
+
+    amount = @_synthesizeHandlePosition amount
+    assert (helpers.isValidNumber amount), "The amount should be a number."
 
     @_$handle.css 'top', "#{amount}px"
 
