@@ -6,6 +6,9 @@ Backbone = require 'backbone'
 assert = require 'assert'
 helpers = require 'app/helpers'
 
+# ## SliderView
+#
+# This class that will represent a slider/track-bar.
 module.exports = class SliderView extends Backbone.View
   className: 'SliderView'
   _isMouseDown: false
@@ -16,18 +19,21 @@ module.exports = class SliderView extends Backbone.View
   _value: 0
 
   # TODO: document how Backbone.js' initialize method works.
-  ###
-  This method is called whenever a new instance of the SliderView class is
-  initialized.
-
-  @params 
-    _options: an object, with the following optional properties
-      - height: a number reprsenting the physical height of the slider
-      - width: a number reprsenting the physical width of the slider
-      - min: a number representing the minimum value that the slider can accept.
-      - max: a number representing the maximum value that the slider can accept.
-      - initial: the initial value to set the slider to.
-  ###
+  
+  # ## `initialize` 
+  #
+  # This method is called whenever a new instance of the SliderView class is
+  # initialized.
+  #
+  # * *param* `_options`: associative array (object). It has the following
+  # options:
+  #   * `height`: a number reprsenting the physical height of the slider.
+  #   * `width`: a number reprsenting the physical width of the slider.
+  #   * `min:` a number representing the minimum value that the slider can
+  #   accept.
+  #   * `max`: a number representing the maximum value that the slider can
+  #   accept.
+  #   * `initial`: the initial value to set the slider to.
   initialize: (@_options = {}) ->
     @_options = _.extend {
       height: 200
@@ -43,6 +49,13 @@ module.exports = class SliderView extends Backbone.View
 
     return
 
+  # ## `setValue` 
+  #
+  # Sets the slider's value. If the value isn't within the defined `min` and `max`
+  # then a value close to that will be set.
+  #
+  # * *param* `value`: the value to set the slider to.
+  # * *see also* `initialize`
   setValue: (value) ->
     @_value = value
 
@@ -53,6 +66,11 @@ module.exports = class SliderView extends Backbone.View
     
     return
 
+  # ## `getValue`
+  #
+  # Get the current value that the silder has been set to.
+  #
+  # * *returns* a number.
   getValue: ->
     return @_value
 

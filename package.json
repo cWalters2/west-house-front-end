@@ -22,6 +22,11 @@
     "less-middleware": "~0.1.9",
     "express-custom-mime-types": "~1.0.4",
     "coffee-script": "~1.4.0",
-    "connect-commonjs-amd": "0.0.1"
+    "connect-commonjs-amd": "0.0.1",
+    "underscore": "~1.4.3",
+    "cli-color": "~0.2.1"
+  },
+  "devDependencies": {
+    "rimraf": "~2.1.1"
   }
 }

@@ -7,7 +7,7 @@ This is the front-end code of West House's ALIS.
 ### Technologies Used
 
 * <a href="http://nodejs.org/" target="_blank">Node.js</a>
-* <a href="http://coffeescript.org/ target="_blank">CoffeeScript</a>
+* <a href="http://coffeescript.org/" target="_blank">CoffeeScript</a>
 * <a href="http://expressjs.com/" target="_blank">Express</a>
 * <a href="http://lesscss.org/" target="_blank">LESS</a>
 * <a href="http://jquery.com/" target="_blank">jQuery</a>
@@ -65,6 +65,12 @@ $ nodemon server.coffee
 
 ## Development
 
+### Things to install
+
+* <a href="http://jashkenas.github.com/docco/" target="_blank">Docco</a>, for documenting CoffeeScript source code.
+  * For better documentation, also install <a href="http://pygments.org/" target="_blank">Pygments</a> (you can find the installation instructions on <a href="https://github.com/jashkenas/docco/blob/master/resources/README.md" target="_blank">Docco's readme file</a>).
+    * This also means that you have to install <a href="http://pypi.python.org/pypi/setuptools" target="_blank">setuptools</a>.
+
 ### Things to Look Into
 
 * JavaScript
@@ -73,6 +79,7 @@ $ nodemon server.coffee
   * <a href="https://gist.github.com/357981/" target="_blank">Comma-first variable and property declaration</a> (JavaScript coding style used in this project)
   * <a href="http://pkp.sfu.ca/wiki/index.php/JavaScript_coding_conventions" target="_blank">Some JavaScript coding conventions</a>
 * <a href="https://github.com/polarmobile/coffeescript-style-guide#coffeescript-style-guide" target="_blank">CoffeeScript style guide</a>
+* <a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a>. Someone wrote a <a href="http://www.simplecode.me/2011/12/11/getting-started-with-markdown/" target="_blank">tutorial</a> to help you started. But original author's website contains all the details of the Markdown language.
 
 ### Check List
 
