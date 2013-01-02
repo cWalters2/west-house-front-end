@@ -91,7 +91,9 @@ module.exports = class SliderView extends Backbone.View
 
   getText: ->
     percentage = @getPercentage()
-    return "#{if percentage is 0 then 'Off' else Math.round percentage * 100}%"
+    return (
+      "#{if percentage is 0 then 'Off' else "#{Math.round percentage * 100}%"}"
+    )
 
   # ## `render`
   #
