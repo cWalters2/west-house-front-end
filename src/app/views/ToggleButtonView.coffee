@@ -1,7 +1,7 @@
 require 'css!styles/views/ToggleButtonView.css'
 
 Backbone = require 'backbone'
-template = require 'text!templates/views/BaseTrackBarView.underscore'
+template = require 'text!templates/views/ToggleButtonView.underscore'
 helpers = require 'app/helpers'
 
 module.exports = class ToggleButtonView extends Backbone.View
@@ -9,6 +9,7 @@ module.exports = class ToggleButtonView extends Backbone.View
   _toggled: null
   _$track: null
   _$handle: null
+  _$handleText: null
 
   ###
   @params
@@ -54,12 +55,17 @@ module.exports = class ToggleButtonView extends Backbone.View
     else if not @_toggled and @_$handle.position().top < @_maxTrackTopOffset()
       @_$handle.css 'top', "#{@_maxTrackTopOffset()}px"
 
+    @_updateText()
+
     return
 
   toggle: ->
     @_toggled = not @_toggled
     @_animateToggle()
     return
+
+  _updateText: ->
+    @_$handleText.html "#{if @_toggled then 'On' else 'Off'}"
 
   render: ->
     @$el.html _.template template, {}
@@ -74,6 +80,12 @@ module.exports = class ToggleButtonView extends Backbone.View
     @_$handle.css
       width: "#{@_options.width}px"
       height: "#{@_options.height / 2}px"
+
+    @_$handleText = @_$handle.find '.text'
+
+    @_$handleText.css 'padding-top', "#{@_options.height / 4 - 6}px"
+
+    console.log @_$handleText[0]
 
     @_animateToggle()
 

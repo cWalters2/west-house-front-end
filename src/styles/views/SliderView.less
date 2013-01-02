@@ -1,37 +1,15 @@
-//@import "BaseTrackBarView.less";
 @import "../lib/mixins";
-@import "../lib/colours";
-
-@sliderHandleColour: #0099ff;
+//@import "../lib/colours";
+@import "slider-mixins";
 
 .SliderView {
   .track {
-    border-radius: 10px;
-    border: 1px solid #aaa;
-    position: relative;
-    .box-sizing(border-box);
-    box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.25);
-
-    .linear-gradient(
-      top,
-      #aaa,
-      #333
-    );
-
+    .track-style();
     .handle {
       @handleHeight: 35px;
       cursor: move;
       height: @handleHeight;
       position: absolute;
-      @sliderHandleColourFrom: lighten(
-        @sliderHandleColour,
-        13%
-      );
-      @sliderHandleColourTo: darken(
-        @sliderHandleColour,
-        13%
-      );
-      @boxShadowOptions: 0 2px 5px black;
       &:after {
         content: '';
         position: absolute;
@@ -51,19 +29,14 @@
         box-shadow: @boxShadowOptions;
       }
       .text {
+        .handle-text();
         .box-sizing(border-box);
         padding-top: 11px;
-        color: white;
         position: absolute;
         height: @handleHeight;
         z-index: 11;
         top: 0px;
         left: 0px;
-        text-shadow: 0 1px 2px black;
-        text-align: center;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 12px;
       }
       .inner {
         height: @handleHeight;
@@ -72,8 +45,8 @@
         border-top: @borderOptions;
         border-left: @borderOptions;
         border-bottom: @borderOptions;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+        border-top-left-radius: @sliderBoxBorderRadius;
+        border-bottom-left-radius: @sliderBoxBorderRadius;
 
         position: absolute;
         .box-sizing(border-box);
