@@ -6,22 +6,23 @@
 
 .SliderView {
   .track {
-    border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 10px;
+    border: 1px solid #aaa;
     position: relative;
     .box-sizing(border-box);
+    box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.25);
+
+    .linear-gradient(
+      top,
+      #aaa,
+      #333
+    );
 
     .handle {
-      @handleHeight: 50px;
+      @handleHeight: 35px;
+      cursor: move;
       height: @handleHeight;
-      background-color: @sliderHandleColour;
-      @borderOptions: 1px solid white;
-      border-top: @borderOptions;
-      border-left: @borderOptions;
-      border-bottom: @borderOptions;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-
+      position: absolute;
       @sliderHandleColourFrom: lighten(
         @sliderHandleColour,
         13%
@@ -30,21 +31,14 @@
         @sliderHandleColour,
         13%
       );
-
-      position: absolute;
-      .box-sizing(border-box);
-      .linear-gradient(
-        top,
-        @sliderHandleColourFrom,
-        @sliderHandleColourTo
-      );
+      @boxShadowOptions: 0 2px 5px black;
       &:after {
         content: '';
         position: absolute;
-        top: 6px;
-        right: -19px;
-        z-index: -1;
-        @dimensions: unit(floor((@handleHeight - 1) / 1.414213562), px);
+        top: 5px;
+        right: -1px;
+        z-index: 9;
+        @dimensions: unit(floor((@handleHeight - 2) / 1.414213562), px);
         height: @dimensions;
         width: @dimensions;
         .linear-gradient(
@@ -54,6 +48,47 @@
         );
         .transform(rotate(45deg));
         border: 1px solid white;
+        box-shadow: @boxShadowOptions;
+      }
+      .text {
+        .box-sizing(border-box);
+        padding-top: 11px;
+        color: white;
+        position: absolute;
+        height: @handleHeight;
+        z-index: 11;
+        top: 0px;
+        left: 0px;
+        text-shadow: 0 1px 2px black;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+      }
+      .inner {
+        height: @handleHeight;
+        background-color: @sliderHandleColour;
+        @borderOptions: 1px solid white;
+        border-top: @borderOptions;
+        border-left: @borderOptions;
+        border-bottom: @borderOptions;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+
+        position: absolute;
+        .box-sizing(border-box);
+        .linear-gradient(
+          top,
+          @sliderHandleColourFrom,
+          @sliderHandleColourTo
+        );
+        z-index: 10;
+      }
+      .shadow {
+        height: @handleHeight;
+        position: absolute;
+        z-index: 8px;
+        box-shadow: @boxShadowOptions;
       }
     }
   }

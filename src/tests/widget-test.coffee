@@ -19,7 +19,12 @@ $ ->
 
   do ->
     $div = createColumn()
-    $div.append (new SliderView {min: 1, max: 4}).$el
+    window.sliderView = sliderView = new SliderView
+      width: 50
+      min: 1
+      max: 4
+      initial: 1
+    $div.append (sliderView).$el
     $parent.append $div
 
   do ->
@@ -28,3 +33,4 @@ $ ->
     $parent.append $div
 
   $mainView.append $parent
+  sliderView.setInitial()
