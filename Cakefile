@@ -5,6 +5,7 @@ child_process = require 'child_process'
 clc = require 'cli-color'
 
 task 'build-doc', 'Build the documentation.', ->
+  # Get a list of all CoffeeScript files in `src/app`.
   coffeeFiles = wrench.readdirSyncRecursive('src/app')
     .filter((filename) -> return helpers.endsWith filename, '.coffee')
     .map((filename) -> "src/app/#{filename}")

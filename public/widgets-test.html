@@ -10,6 +10,13 @@
 
     <div id="main-view"></div>
 
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io.connect('http://localhost:3000');
+    socket.on('filechange', function () {
+      document.location.reload(true);
+    });
+    </script>
     <script type="text/javascript" src="js/require.js"></script>
     <script type="text/javascript">
     require.config({

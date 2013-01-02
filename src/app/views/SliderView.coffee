@@ -8,7 +8,12 @@ helpers = require 'app/helpers'
 
 # ## SliderView
 #
+# TODO: unit-test this.
+#
 # This class that will represent a slider/track-bar.
+#
+# * *event* `slidechange`. Called when the user changes the value through the
+# slider, or when the value is changed through `setValue`.
 module.exports = class SliderView extends Backbone.View
   className: 'SliderView'
   _isMouseDown: false
@@ -25,6 +30,8 @@ module.exports = class SliderView extends Backbone.View
   # This method is called whenever a new instance of the SliderView class is
   # initialized.
   #
+  # It will render the slider, by calling the this class' `render` method.
+  #
   # * *param* `_options`: associative array (object). It has the following
   # options:
   #   * `height`: a number reprsenting the physical height of the slider.
@@ -34,6 +41,7 @@ module.exports = class SliderView extends Backbone.View
   #   * `max`: a number representing the maximum value that the slider can
   #   accept.
   #   * `initial`: the initial value to set the slider to.
+  # * *see also* `render`
   initialize: (@_options = {}) ->
     @_options = _.extend {
       height: 200
@@ -43,9 +51,9 @@ module.exports = class SliderView extends Backbone.View
       initial: 1
     }, @_options
 
-    @setValue @_options.initial
-
     @render()
+
+    @setValue @_options.initial
 
     return
 
@@ -64,7 +72,9 @@ module.exports = class SliderView extends Backbone.View
     else if @_value > @_options.max
       @_value = @_options.max
     
-    return
+    @_setHandlePositionByValue @_value
+
+    @.trigger 'slidechange'
 
   # ## `getValue`
   #
@@ -73,6 +83,44 @@ module.exports = class SliderView extends Backbone.View
   # * *returns* a number.
   getValue: ->
     return @_value
+
+  # ## `render`
+  #
+  # 
+  render: ->
+    @$el.html _.template template, {}
+
+    @_$track = @$el.find '.track'
+    @_$handle = @_$track.find '.handle'
+
+    @_$track.css
+      width: "#{@_options.width}px"
+      height: "#{@_options.height}px"
+
+    @_$handle.css
+      width: "#{@_options.width}px"
+      top: "#{@_handlePosition}px"
+
+    self = this
+    
+    @_$handle.mousedown (e) ->
+      $this = $ this
+      self._isMouseDown = true
+      self._clickPosition = e.pageY - $this.offset().top
+
+    $document = $ document
+    
+    mouseupCb = =>
+      @_isMouseDown = false
+
+    @_$handle.mouseup mouseupCb
+    $document.mouseup mouseupCb
+
+    $document.mousemove (e) ->
+      $this = $ this
+      if self._isMouseDown
+        self._setHandlePosition e.pageY - self._clickPosition
+        self.trigger 'slidechange'
 
   _getTrackHeight: ->
     return @_$track.height()
@@ -98,6 +146,48 @@ module.exports = class SliderView extends Backbone.View
 
     return retval
 
+  _getHandlePosition: -> @_$handle.position().top
+
+  _getValueForHandlePosition: ->
+    handlePosition = @_getHandlePosition()
+    assert (helpers.isValidNumber handlePosition),
+    "Handle position should be a number"
+
+    height = @_getTrackHeight() - @_getHandleHeight()
+    assert (helpers.isValidNumber height), "The height should be a number"
+
+    percentage = handlePosition / height
+
+    max = @_options.max - @_options.min
+    assert (helpers.isValidNumber max), "The max should be a number"
+
+    percentage = handlePosition / height
+
+    retval = (Math.round max * percentage) + @_options.min
+    return retval
+
+  _setHandlePositionByValue: (value) ->
+    assert @_$handle, "Handle should be defined."
+    assert @_$track, "Track should be defined."
+
+    if value < @_options.min
+      #@_setHandlePosition 0
+      value = @_options.min
+    else if value > @_options.max
+      #@_setHandlePosition @_getTrackHeight()
+      value = @_options.max
+
+    max = @_options.max - @_options.min
+    assert (helpers.isValidNumber max), "Max should be a number."
+
+    height = @_$handle.height() - @_$track.height()
+    assert (helpers.isValidNumber height), "The height should be a number."
+
+    newValue = value + @_options.min
+    percentage = newValue / max
+
+    @_setHandlePosition Math.round percentage * height
+
   _setHandlePosition: (amount) ->
     assert @_$handle
     assert @_$track
@@ -110,41 +200,7 @@ module.exports = class SliderView extends Backbone.View
     assert (helpers.isValidNumber amount), "The amount should be a number."
 
     amount = @_synthesizeHandlePosition amount
+
     assert (helpers.isValidNumber amount), "The amount should be a number."
 
     @_$handle.css 'top', "#{amount}px"
-
-  render: ->
-    @$el.html _.template template, {}
-
-    @_$track = @$el.find '.track'
-    @_$handle = @_$track.find '.handle'
-
-    @_$track.css
-      width: "#{@_options.width}px"
-      height: "#{@_options.height}px"
-
-    @_$handle.css
-      width: "#{@_options.width}px"
-      height: "50px"
-      top: "#{@_handlePosition}px"
-
-    self = this
-    
-    @_$handle.mousedown (e) ->
-      $this = $ this
-      self._isMouseDown = true
-      self._clickPosition = e.pageY - $this.offset().top
-
-    $document = $ document
-    
-    mouseupCb = =>
-      @_isMouseDown = false
-
-    @_$handle.mouseup mouseupCb
-    $document.mouseup mouseupCb
-
-    $document.mousemove (e) ->
-      $this = $ this
-      if self._isMouseDown
-        self._setHandlePosition e.pageY - self._clickPosition

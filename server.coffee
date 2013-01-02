@@ -1,20 +1,23 @@
 CoffeeScript = require 'coffee-script'
 express = require 'express'
+http = require 'http'
 path = require 'path'
+app = express()
+server = http.createServer app
+io = require('socket.io').listen server
 connectCommonJsAmd = require 'connect-commonjs-amd'
+watchr = require 'watchr'
+emitter = new (require 'events').EventEmitter
 
-publicPath = path.resolve '.'
 port = process.argv[2]||3000
-
-server = express()
 
 srcFolder = path.join __dirname, 'src'
 publicFolder = path.join __dirname, 'public'
 
-server.configure ->
-  server.use express.bodyParser()
-  server.use express.methodOverride()
-  server.use require('connect-coffee-script')({
+app.configure ->
+  app.use express.bodyParser()
+  app.use express.methodOverride()
+  app.use require('connect-coffee-script')({
     src: srcFolder
     dest: publicFolder
     compile: (str, options) ->
@@ -22,20 +25,32 @@ server.configure ->
         CoffeeScript.compile str, { bare: true }
       )
   })
-  server.use require('less-middleware')({
+  app.use require('less-middleware')({
     src: srcFolder
     dest: publicFolder
   })
-  server.use express.static publicFolder
-  server.use require('express-custom-mime-types')({
+  app.use express.static publicFolder
+  app.use require('express-custom-mime-types')({
     mimes: {
       '.underscore': 'text/plain'
     }  
   })
-  server.use express.errorHandler
+  app.use express.errorHandler
     dumpException: true
     showStack: true
-  server.use server.router
+  app.use app.router
+
+watchr.watch
+  paths: [ 'src', 'public' ]
+  listeners:
+    change: ->
+      console.log "File changed."
+      emitter.emit 'filechange'
+
+io.sockets.on 'connection', (socket) ->
+  emitter.once 'filechange', ->
+    console.log 'Fired.'
+    socket.emit 'filechange', { m: 1 }
 
 server.listen port
-console.log "Server listening on port #{port}."
+console.log "app listening on port #{port}."

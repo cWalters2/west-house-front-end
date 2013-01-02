@@ -1,5 +1,60 @@
-@import "BaseTrackBarView.less";
+//@import "BaseTrackBarView.less";
+@import "../lib/mixins";
+@import "../lib/colours";
+
+@sliderHandleColour: #0099ff;
 
 .SliderView {
-  .BaseTrackBarView;
+  .track {
+    border: 1px solid black;
+    border-radius: 5px;
+    position: relative;
+    .box-sizing(border-box);
+
+    .handle {
+      @handleHeight: 50px;
+      height: @handleHeight;
+      background-color: @sliderHandleColour;
+      @borderOptions: 1px solid white;
+      border-top: @borderOptions;
+      border-left: @borderOptions;
+      border-bottom: @borderOptions;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+
+      @sliderHandleColourFrom: lighten(
+        @sliderHandleColour,
+        13%
+      );
+      @sliderHandleColourTo: darken(
+        @sliderHandleColour,
+        13%
+      );
+
+      position: absolute;
+      .box-sizing(border-box);
+      .linear-gradient(
+        top,
+        @sliderHandleColourFrom,
+        @sliderHandleColourTo
+      );
+      &:after {
+        content: '';
+        position: absolute;
+        top: 6px;
+        right: -19px;
+        z-index: -1;
+        @dimensions: unit(floor((@handleHeight - 1) / 1.414213562), px);
+        height: @dimensions;
+        width: @dimensions;
+        .linear-gradient(
+          top left,
+          @sliderHandleColourFrom,
+          @sliderHandleColourTo
+        );
+        .transform(rotate(45deg));
+        border: 1px solid white;
+      }
+    }
+  }
 }

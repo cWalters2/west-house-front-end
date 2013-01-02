@@ -24,9 +24,13 @@
     "coffee-script": "~1.4.0",
     "connect-commonjs-amd": "0.0.1",
     "underscore": "~1.4.3",
-    "cli-color": "~0.2.1"
+    "cli-color": "~0.2.1",
+    "wrench": "~1.4.4",
+    "socket.io": "~0.9.13"
   },
   "devDependencies": {
-    "rimraf": "~2.1.1"
+    "rimraf": "~2.1.1",
+    "watchr": "~2.3.1",
+    "mkdirp": "~0.3.4"
   }
 }

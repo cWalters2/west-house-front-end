@@ -1,6 +1,6 @@
+// TODO: remove this file. Useless.
 @import "../lib/mixins";
-
-@sliderHandleColor: blue;
+@import "../lib/colours";
 
 .BaseTrackBarView () {
   .track {
@@ -9,7 +9,7 @@
     position: relative;
     .box-sizing(border-box);
     .handle {
-      background-color: @sliderHandleColor;
+      background-color: @sliderHandleColour;
       border: 1px solid black;
       border-radius: 5px;
       position: absolute;

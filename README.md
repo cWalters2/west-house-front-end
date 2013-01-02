@@ -11,16 +11,25 @@ This is the front-end code of West House's ALIS.
 * <a href="http://expressjs.com/" target="_blank">Express</a>
 * <a href="http://lesscss.org/" target="_blank">LESS</a>
 * <a href="http://jquery.com/" target="_blank">jQuery</a>
-* <a href="http://backbonejs.org/" target="_blank">[Backbone.js](http://backbonejs.org/)
+* <a href="http://backbonejs.org/" target="_blank">Backbone.js</a>
 * <a href="http://underscorejs.org" target="_blank">Underscore.js</a>
 * a plethora of front-end libraries and plugins. Just take a look at `public/index.html`, and look at the second script tag. You'll see the plugins and libraries used in the `require.config` call.
 * a plethora of middleware for the Express framework. Just take a look at `package.json`'s `"dependencies"` property, and you'll see the list.
 
 ## Usage
 
-First, install the latest version of [Node.js](http://nodejs.org/).
+First, install the latest version of <a href="http://nodejs.org/" target="_blank">Node.js</a>, and <a href="http://git-scm.com/" target="_blank">Git</a>.
 
-Next, install all the dependencies.
+Next, download the source code, and then `cd` to the project's folder.
+
+```shell
+# This is assuming that there aren't any other `west-house-front-end` folders in
+# your current working directory
+$ git clone git://github.com/shovon/west-house-front-end.git
+$ cd west-house-front-end
+```
+
+Install all of the dependencies that are used by the project.
 
 ```shell
 # Might require sudo
@@ -68,8 +77,8 @@ $ nodemon server.coffee
 ### Things to install
 
 * <a href="http://jashkenas.github.com/docco/" target="_blank">Docco</a>, for documenting CoffeeScript source code.
-    * For better documentation, also install <a href="http://pygments.org/" target="_blank">Pygments</a> (you can find the installation instructions on <a href="https://github.com/jashkenas/docco/blob/master/resources/README.md" target="_blank">Docco's readme file</a>).
-        * This also means that you have to install <a href="http://pypi.python.org/pypi/setuptools" target="_blank">setuptools</a>.
+    * To add syntax highlighting to the documentation, you'll want to isntall <a href="http://pygments.org/" target="_blank">Pygments</a> (you can find the installation instructions on <a href="https://github.com/jashkenas/docco/blob/master/resources/README.md" target="_blank">Docco's readme file</a>).
+        * This also means that you'll want to install <a href="http://pypi.python.org/pypi/setuptools" target="_blank">setuptools</a> to help you set up Pygments (setuptools installs easy_install, which will allow you to install Pygments in only one command).
 
 ### Things to Look Into
 
@@ -79,7 +88,7 @@ $ nodemon server.coffee
   * <a href="https://gist.github.com/357981/" target="_blank">Comma-first variable and property declaration</a> (JavaScript coding style used in this project)
   * <a href="http://pkp.sfu.ca/wiki/index.php/JavaScript_coding_conventions" target="_blank">Some JavaScript coding conventions</a>
 * <a href="https://github.com/polarmobile/coffeescript-style-guide#coffeescript-style-guide" target="_blank">CoffeeScript style guide</a>
-* <a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a>. Someone wrote a <a href="http://www.simplecode.me/2011/12/11/getting-started-with-markdown/" target="_blank">tutorial</a> to help you get started. But original author's website contains all the details of the Markdown language.
+* <a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a>. Someone wrote a <a href="http://www.simplecode.me/2011/12/11/getting-started-with-markdown/" target="_blank">tutorial</a> to help you get started. There's also a live <a href="http://dillinger.io/" target="_blank">Markdown editor</a>. You can use that to practice using the language. But the original author's website has all the low-level details.
 
 ### Check List
 
@@ -92,3 +101,7 @@ If you are a new contributor to the West House Project's ALIS front-end, you are
 ## Contact
 
 Feel free to contact Salehen at [salehen.rahman@gmail.com](mailto:salehen.rahman@gmail.com), if you have any question.
+
+## TODO
+
+* refactor the code to allow for a compiled version of the front-end.
