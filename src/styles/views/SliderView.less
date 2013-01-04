@@ -1,0 +1,67 @@
+@import "../lib/mixins";
+@import "slider-mixins";
+
+.SliderView {
+  .track {
+    .track-style();
+    .handle {
+      @handleHeight: 35px;
+      cursor: move;
+      height: @handleHeight;
+      position: absolute;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 6px;
+        right: -1px;
+        z-index: 9;
+        @dimensions: unit(floor((@handleHeight - 2) / 1.414213562), px);
+        height: @dimensions;
+        width: @dimensions;
+        .linear-gradient(
+          top left,
+          @sliderHandleColourFrom,
+          @sliderHandleColourTo
+        );
+        .transform(rotate(45deg));
+        border: 1px solid white;
+        box-shadow: @boxShadowOptions;
+      }
+      .text {
+        .handle-text();
+        .box-sizing(border-box);
+        padding-top: 11px;
+        position: absolute;
+        height: @handleHeight;
+        z-index: 11;
+        top: 0px;
+        left: 0px;
+      }
+      .inner {
+        height: @handleHeight;
+        background-color: @sliderHandleColour;
+        @borderOptions: 1px solid white;
+        border-top: @borderOptions;
+        border-left: @borderOptions;
+        border-bottom: @borderOptions;
+        border-top-left-radius: @sliderBoxBorderRadius;
+        border-bottom-left-radius: @sliderBoxBorderRadius;
+
+        position: absolute;
+        .box-sizing(border-box);
+        .linear-gradient(
+          top,
+          @sliderHandleColourFrom,
+          @sliderHandleColourTo
+        );
+        z-index: 10;
+      }
+      .shadow {
+        height: @handleHeight;
+        position: absolute;
+        z-index: 8px;
+        box-shadow: @boxShadowOptions;
+      }
+    }
+  }
+}

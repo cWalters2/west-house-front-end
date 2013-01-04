@@ -1,0 +1,22 @@
+@import "lib/normalize";
+
+html {
+  -webkit-user-select: none;
+}
+
+body {
+  background-color: #666;
+}
+
+// TODO: remove this if we were to ever add Twitter's Bootstrap.
+.clearfix {
+  &:before { content: ''; display: block; }
+  &:after { content: ''; display: table; clear: both; }
+  zoom: 1;
+}
+
+// TODO: check to see if this is even necessary.
+.column {
+  float: left;
+  clear: right;
+}

@@ -2,12 +2,35 @@
   "name": "west-house-front-end",
   "description": "West House Project's front-end code.",
   "version": "0.0.1",
-  "licenses": [{
-    "type": "Attribution-NonCommercial-NoDerivs",
-    "url": "https://raw.github.com/west-house-project/west-house-front-end/master/LICENSE"
-  }],
+  "author": "Simon Fraser University",
+  "contributors": [
+    {
+      "name": "Salehen Shovon Rahman",
+      "email": "salehen.rahman@gmail.com"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "Attribution-NonCommercial-NoDerivs",
+      "url": "https://raw.github.com/west-house-project/west-house-front-end/master/LICENSE"
+    }
+  ],
   "private": true,
   "dependencies": {
-    "express": "~3.0.4"
+    "express": "~3.0.4",
+    "connect-coffee-script": "0.0.7",
+    "less-middleware": "~0.1.9",
+    "express-custom-mime-types": "~1.0.4",
+    "coffee-script": "~1.4.0",
+    "connect-commonjs-amd": "0.0.1",
+    "underscore": "~1.4.3",
+    "cli-color": "~0.2.1",
+    "wrench": "~1.4.4",
+    "socket.io": "~0.9.13"
+  },
+  "devDependencies": {
+    "rimraf": "~2.1.1",
+    "watchr": "~2.3.1",
+    "mkdirp": "~0.3.4"
   }
 }

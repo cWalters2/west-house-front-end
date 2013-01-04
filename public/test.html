@@ -1,0 +1,39 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Testing Suite</title>
+    <link rel="stylesheet" href="mocha/mocha.css">
+  </head>
+  <body>
+    <div id="mocha"></div>
+
+    <script type="text/javascript" src="mocha/mocha.js"></script>
+    <script type="text/javascript">mocha.setup('bdd');</script>
+    <script type="text/javascript" src="mocha/expect.js"></script>
+    <script type="text/javascript" src="js/require.js"></script>
+    <script type="text/javascript">
+    require.config({
+      paths: {
+          'text': 'js/text'
+        , 'css': 'js/css'
+        , 'assert': 'js/assert'
+        , 'underscore': 'js/underscore-min'
+        , 'backbone': 'js/backbone-min'
+        , 'jquery': 'js/jquery-1.8.3.min'
+      }
+    });
+    require([
+        'tests/slider'
+      ]
+      , function () {
+        var runner = mocha.run();
+        runner.on('fail', function (test, err) {
+          console.error(test.err.stack);
+        });
+      }
+    );
+    </script>
+  </body>
+</html>

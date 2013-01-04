@@ -1,0 +1,16 @@
+.box-sizing (@box-model) {
+  -webkit-box-sizing: @box-model;
+  -moz-box-sizing: @box-model;
+  box-sizing: @box-model;
+}
+
+.linear-gradient (@position, @from, @to) {
+  background-image: -moz-linear-gradient(@position, @from, @to);
+  background-image: -webkit-linear-gradient(@position, @from, @to);
+}
+
+.transform (@options) {
+  transform: @options;
+  -moz-transform: @options;
+  -webkit-transform: @options;
+}

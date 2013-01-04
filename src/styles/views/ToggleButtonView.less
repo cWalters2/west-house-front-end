@@ -1,0 +1,27 @@
+@import '../lib/mixins';
+@import 'slider-mixins';
+
+.ToggleButtonView {
+  .track {
+    .track-style();
+    .handle {
+      cursor: default;
+      .box-sizing(border-box);
+      background-color: @sliderHandleColour;
+      position: absolute;
+      box-shadow: @boxShadowOptions;
+      border-radius: @sliderBoxBorderRadius;
+      .linear-gradient(
+        top,
+        @sliderHandleColourFrom,
+        @sliderHandleColourTo
+      );
+      border: 1px solid white;
+      transition: top 250ms ease-in-out;
+      -webkit-transition: top 63ms ease-in-out;
+      .text {
+        .handle-text();
+      }
+    }
+  }
+}

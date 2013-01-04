@@ -1,1 +1,5 @@
 node_modules
+public/app
+public/styles
+public/tests
+docs
