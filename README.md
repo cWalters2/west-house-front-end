@@ -13,6 +13,7 @@ This is the front-end code of West House's ALIS.
 * <a href="http://jquery.com/" target="_blank">jQuery</a>
 * <a href="http://backbonejs.org/" target="_blank">Backbone.js</a>
 * <a href="http://underscorejs.org" target="_blank">Underscore.js</a>
+* <a href="http://requirejs.org/" target="_blank">RequireJS</a>
 * a plethora of front-end libraries and plugins. Just take a look at `public/index.html`, and look at the second script tag. You'll see the plugins and libraries used in the `require.config` call.
 * a plethora of middleware for the Express framework. Just take a look at `package.json`'s `"dependencies"` property, and you'll see the list.
 
