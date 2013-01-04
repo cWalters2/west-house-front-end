@@ -85,8 +85,6 @@ module.exports = class ToggleButtonView extends Backbone.View
 
     @_$handleText.css 'padding-top', "#{@_options.height / 4 - 6}px"
 
-    console.log @_$handleText[0]
-
     @_animateToggle()
 
     @_$track.click =>

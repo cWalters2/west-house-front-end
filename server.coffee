@@ -41,10 +41,9 @@ app.configure ->
   app.use app.router
 
 watchr.watch
-  paths: [ 'src', 'public' ]
+  paths: [ srcFolder, publicFolder ]
   listeners:
     change: ->
-      console.log "File changed."
       emitter.emit 'filechange'
 
 io.sockets.on 'connection', (socket) ->
