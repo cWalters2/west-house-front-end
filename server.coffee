@@ -51,5 +51,8 @@ io.sockets.on 'connection', (socket) ->
     console.log 'Fired.'
     socket.emit 'filechange', { m: 1 }
 
+  socket.on 'controlled', (data) ->
+    console.log data
+
 server.listen port
 console.log "app listening on port #{port}."

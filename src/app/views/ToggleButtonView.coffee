@@ -3,7 +3,13 @@ require 'css!styles/views/ToggleButtonView.css'
 Backbone = require 'backbone'
 template = require 'text!templates/views/ToggleButtonView.underscore'
 helpers = require 'app/helpers'
+io = require 'socket.io/socket.io'
 
+# ## ToggleButtonView
+#
+# This will be the class that represents the toggle switch.
+#
+# TODO: unit test this.
 module.exports = class ToggleButtonView extends Backbone.View
   className: 'ToggleButtonView'
   _toggled: null
@@ -11,15 +17,14 @@ module.exports = class ToggleButtonView extends Backbone.View
   _$handle: null
   _$handleText: null
 
-  ###
-  @params
-    _options: an object, with the following optional properties
-      - height: a number representing the physical height of the button
-      - width: a number representing the physical width of the button
-      - initial: any object that represents the toggle state of the button.
-        if the value of `initial` is truthy, then the button will be toggled
-        on. Otherwise, it will be toggled off.
-  ###
+  
+  # *params* `_options`: an associative array (object), with the following
+  # optional properties
+  # * `height`: a number representing the physical height of the button
+  # * `width`: a number representing the physical width of the button
+  # * `initial`: any object that represents the toggle state of the button. if
+  # the value of `initial` is truthy, then the button will be toggled on.
+  # Otherwise, it will be toggled off.
   initialize: (@_options = {}) ->
     @_options = _.extend {
       height: 200
@@ -30,6 +35,11 @@ module.exports = class ToggleButtonView extends Backbone.View
     @_toggled = !!@_options.initial
 
     @render()
+
+    socket = io.connect 'http://localhost'
+
+    @on 'toggled', (data) ->
+      socket.emit 'controlled', data
 
     return
 
@@ -62,6 +72,7 @@ module.exports = class ToggleButtonView extends Backbone.View
   toggle: ->
     @_toggled = not @_toggled
     @_animateToggle()
+    @trigger 'toggled', @_toggled
     return
 
   _updateText: ->

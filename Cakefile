@@ -4,6 +4,9 @@ rimraf = require 'rimraf'
 child_process = require 'child_process'
 clc = require 'cli-color'
 
+task 'do-something', 'Do something', ->
+  console.log "Hello, World!"
+
 task 'build-doc', 'Build the documentation.', ->
   # Get a list of all CoffeeScript files in `src/app`.
   coffeeFiles = wrench.readdirSyncRecursive('src/app')
