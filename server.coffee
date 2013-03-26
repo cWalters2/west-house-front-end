@@ -1,3 +1,4 @@
+# TODO: fix up this mess of require calls.
 CoffeeScript = require 'coffee-script'
 express = require 'express'
 http = require 'http'
@@ -8,6 +9,8 @@ io = require('socket.io').listen server
 connectCommonJsAmd = require 'connect-commonjs-amd'
 watchr = require 'watchr'
 emitter = new (require 'events').EventEmitter
+settings = require './settings.json'
+querystring = require 'querystring'
 
 port = process.argv[2]||3000
 
@@ -35,9 +38,6 @@ app.configure ->
       '.underscore': 'text/plain'
     }  
   })
-  app.use express.errorHandler
-    dumpException: true
-    showStack: true
   app.use app.router
 
 watchr.watch
@@ -50,6 +50,36 @@ io.sockets.on 'connection', (socket) ->
   emitter.once 'filechange', ->
     console.log 'Fired.'
     socket.emit 'filechange', { m: 1 }
+
+  socket.on 'controlled', (data) ->
+    console.log data.command
+    requestBody = querystring.stringify
+      command: if data.command is 'on' then 'on' else 'off'
+
+    request = http.request {
+      host: settings.host
+      port: settings.port
+      path: "/devices/#{data.id}/send_command"
+      method: "PUT"
+      headers:
+        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Length': requestBody.length.toString()
+    }, (res) ->
+      res.setEncoding 'utf8'
+      data = ''
+      res.on 'data', (chunk) ->
+        data += chunk
+
+      res.on 'end', ->
+        console.log data
+
+    console.log requestBody
+
+    request.write requestBody
+    request.end()
+
+app.get '/energy-consumed.json', (req, res) ->
+  res.send();
 
 server.listen port
 console.log "app listening on port #{port}."

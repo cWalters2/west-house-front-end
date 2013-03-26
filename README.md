@@ -78,21 +78,23 @@ $ nodemon server.coffee
 ### Things to install
 
 * <a href="http://jashkenas.github.com/docco/" target="_blank">Docco</a>, for documenting CoffeeScript source code.
-    * To add syntax highlighting to the documentation, you'll want to isntall <a href="http://pygments.org/" target="_blank">Pygments</a> (you can find the installation instructions on <a href="https://github.com/jashkenas/docco/blob/master/resources/README.md" target="_blank">Docco's readme file</a>).
+    * To add syntax highlighting to the documentation, you'll want to install <a href="http://pygments.org/" target="_blank">Pygments</a> (you can find the installation instructions on <a href="https://github.com/jashkenas/docco/blob/master/resources/README.md" target="_blank">Docco's readme file</a>).
         * This also means that you'll want to install <a href="http://pypi.python.org/pypi/setuptools" target="_blank">setuptools</a> to help you set up Pygments (setuptools installs easy_install, which will allow you to install Pygments in only one command).
 
 ### Things to Look Into
 
 * JavaScript
-  * <a href="http://backbonetutorials.com/" target="_blank">Model-View-&lt;anything&gt;</a> (MV* using Backbone.js)
-  * <a href="http://requirejs.org/docs/whyamd.html" target="_blank">Asynchronous Module Definition (AMD)</a> (a.k.a. how RequireJS loads dependencies)
-  * <a href="https://gist.github.com/357981/" target="_blank">Comma-first variable and property declaration</a> (JavaScript coding style used in this project)
-  * <a href="http://pkp.sfu.ca/wiki/index.php/JavaScript_coding_conventions" target="_blank">Some JavaScript coding conventions</a>
+    * <a href="http://backbonetutorials.com/" target="_blank">Model-View-&lt;anything&gt;</a> (MV* using Backbone.js)
+    * <a href="http://requirejs.org/docs/whyamd.html" target="_blank">Asynchronous Module Definition (AMD)</a> (a.k.a. how RequireJS loads dependencies)
+    * <a href="https://gist.github.com/357981/" target="_blank">Comma-first variable and property declaration</a> (JavaScript coding style used in this project)
+    * <a href="http://pkp.sfu.ca/wiki/index.php/JavaScript_coding_conventions" target="_blank">Some JavaScript coding conventions</a>
 * <a href="https://github.com/polarmobile/coffeescript-style-guide#coffeescript-style-guide" target="_blank">CoffeeScript style guide</a>
 * <a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a>. Someone wrote a <a href="http://www.simplecode.me/2011/12/11/getting-started-with-markdown/" target="_blank">tutorial</a> to help you get started. There's also a live <a href="http://dillinger.io/" target="_blank">Markdown editor</a>. You can use that to practice using the language. But the original author's website has all the low-level details.
 
 ### Check List
 
+* only one class (constructor) per module.
+    * there is nothing wrong with having more than one class *inside* the module's body, but the module itself should return only one class.
 * be sure that no build files are in the repository. Update the [.gitignore file](http://gitready.com/beginner/2009/01/19/ignoring-files.html), when necessary.
 
 ### Some Really Minor Details
@@ -105,4 +107,7 @@ Feel free to contact Salehen at [salehen.rahman@gmail.com](mailto:salehen.rahman
 
 ## TODO
 
-* refactor the code to allow for a compiled version of the front-end.
+* refactor the code to allow for a compiled version of the front-end
+    * this would mean finding 
+* refactor websockets protocol
+* avoid using a hard-coded string to the origin's URL

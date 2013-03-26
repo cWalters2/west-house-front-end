@@ -8,12 +8,12 @@ helpers = require 'app/helpers'
 
 # ## SliderView
 #
-# TODO: unit-test this.
-#
-# This class that will represent a slider/track-bar.
+# This is class that will represent a slider/track-bar.
 #
 # * *event* `slidechange`. Called when the user changes the value through the
 # slider, or when the value is changed through `setValue`.
+#
+# TODO: unit-test this.
 module.exports = class SliderView extends Backbone.View
   className: 'SliderView'
   _isMouseDown: false
@@ -35,15 +35,16 @@ module.exports = class SliderView extends Backbone.View
   #
   # * *param* `_options`: associative array (object). It has the following
   # options:
-  #   * `height`: a number reprsenting the physical height of the slider.
-  #   * `width`: a number reprsenting the physical width of the slider.
-  #   * `min:` a number representing the minimum value that the slider can
-  #   accept.
-  #   * `max`: a number representing the maximum value that the slider can
-  #   accept.
-  #   * `initial`: the initial value to set the slider to.
+  #     * `height`: a number reprsenting the physical height of the slider.
+  #     * `width`: a number reprsenting the physical width of the slider.
+  #     * `min:` a number representing the minimum value that the slider can
+  # accept.
+  #     * `max`: a number representing the maximum value that the slider can
+  # accept.
+  #     * `initial`: the initial value to set the slider to.
   # * *see also* `render`
   initialize: (@_options = {}) ->
+    # TODO: unit-test this.
     @_options = _.extend {
       height: 200
       width: 50
@@ -58,8 +59,8 @@ module.exports = class SliderView extends Backbone.View
 
   # ## `setValue` 
   #
-  # Sets the slider's value. If the value isn't within the defined `min` and `max`
-  # then a value close to that will be set.
+  # Sets the slider's value. If the value isn't within the defined `min` and
+  # `max` then a value close to that will be set.
   #
   # * *param* `value`: the value to set the slider to.
   # * *see also* `initialize`
@@ -95,9 +96,6 @@ module.exports = class SliderView extends Backbone.View
       "#{if percentage is 0 then 'Off' else "#{Math.round percentage * 100}%"}"
     )
 
-  # ## `render`
-  #
-  # 
   render: ->
     @$el.html _.template template, {}
 
