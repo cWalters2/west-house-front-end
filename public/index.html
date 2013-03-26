@@ -10,7 +10,7 @@
     
     <script src="/socket.io/socket.io.js"></script>
     <script>
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect('http://' + window.location.host);
     socket.on('filechange', function () {
       document.location.reload(true);
     });
@@ -27,10 +27,7 @@
         , "assert": "js/assert"
       }
     });
-    require(["app/main"], function () {
-      var main = require('app/main');
-      main.init();
-    });
+    require(["app/main"], function () {});
     </script>
   </body>
 </html>

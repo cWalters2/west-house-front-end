@@ -3,7 +3,6 @@ require 'css!styles/views/ToggleButtonView.css'
 Backbone = require 'backbone'
 template = require 'text!templates/views/ToggleButtonView.underscore'
 helpers = require 'app/helpers'
-io = require 'socket.io/socket.io'
 
 # ## ToggleButtonView
 #
@@ -16,8 +15,9 @@ module.exports = class ToggleButtonView extends Backbone.View
   _$track: null
   _$handle: null
   _$handleText: null
-
   
+  # ## `initialize`
+  #
   # *params* `_options`: an associative array (object), with the following
   # optional properties
   # * `height`: a number representing the physical height of the button
@@ -35,11 +35,6 @@ module.exports = class ToggleButtonView extends Backbone.View
     @_toggled = !!@_options.initial
 
     @render()
-
-    socket = io.connect 'http://localhost'
-
-    @on 'toggled', (data) ->
-      socket.emit 'controlled', data
 
     return
 

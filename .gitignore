@@ -3,4 +3,5 @@ public/app
 public/styles
 public/tests
 docs
-.DS_STORE
+.DS_Store
+settings.json
