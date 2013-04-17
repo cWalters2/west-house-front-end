@@ -86,7 +86,6 @@ $ nodemon server.coffee
 * JavaScript
     * <a href="http://backbonetutorials.com/" target="_blank">Model-View-&lt;anything&gt;</a> (MV* using Backbone.js)
     * <a href="http://requirejs.org/docs/whyamd.html" target="_blank">Asynchronous Module Definition (AMD)</a> (a.k.a. how RequireJS loads dependencies)
-    * <a href="https://gist.github.com/357981/" target="_blank">Comma-first variable and property declaration</a> (JavaScript coding style used in this project)
     * <a href="http://pkp.sfu.ca/wiki/index.php/JavaScript_coding_conventions" target="_blank">Some JavaScript coding conventions</a>
 * <a href="https://github.com/polarmobile/coffeescript-style-guide#coffeescript-style-guide" target="_blank">CoffeeScript style guide</a>
 * <a href="http://daringfireball.net/projects/markdown/" target="_blank">Markdown</a>. Someone wrote a <a href="http://www.simplecode.me/2011/12/11/getting-started-with-markdown/" target="_blank">tutorial</a> to help you get started. There's also a live <a href="http://dillinger.io/" target="_blank">Markdown editor</a>. You can use that to practice using the language. But the original author's website has all the low-level details.
