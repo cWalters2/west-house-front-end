@@ -49,7 +49,9 @@ watchr.watch
 io.sockets.on 'connection', (socket) ->
   emitter.once 'filechange', ->
     console.log 'Fired.'
-    socket.emit 'filechange', { m: 1 }
+    try
+      socket.emit 'filechange', { m: 1 }
+    catch e
 
   socket.on 'controlled', (data) ->
     console.log data.command
@@ -77,6 +79,34 @@ io.sockets.on 'connection', (socket) ->
 
     request.write requestBody
     request.end()
+
+  setInterval ->
+    element = 18
+
+    request = http.request {
+      host: settings.host
+      port: settings.port
+      path: "/devices/#{element}"
+      method: "GET"
+    }, (res) ->
+      res.setEncoding 'utf8'
+
+      data = ''
+
+      res.on 'data', (chunk) ->
+        data += chunk
+
+      res.on 'end', ->
+        try
+          socket.emit "changed/#{element}", {
+            isOn: if parseInt(JSON.parse(data).Status) then on else off
+          }
+        catch e
+          console.log e
+
+    request.end()
+        
+  , 1000
 
 app.get '/energy-consumed.json', (req, res) ->
   res.send();

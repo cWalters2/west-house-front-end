@@ -65,10 +65,23 @@ module.exports = class ToggleButtonView extends Backbone.View
     return
 
   toggle: ->
-    @_toggled = not @_toggled
-    @_animateToggle()
+    @toggleSilent()
     @trigger 'toggled', @_toggled
     return
+
+  toggleForceSilent: (toggleOn) ->
+    if toggleOn and not @isToggled()
+      @toggleSilent()
+    else if not toggleOn and @isToggled()
+      @toggleSilent()
+
+  toggleForce: (toggleOn) ->
+    toggleForceSilent toggleOn
+    @trigger 'toggled', @_toggled
+
+  toggleSilent: ->
+    @_toggled = not @_toggled
+    @_animateToggle()
 
   _updateText: ->
     @_$handleText.html "#{if @_toggled then 'On' else 'Off'}"

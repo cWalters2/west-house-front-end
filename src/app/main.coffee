@@ -59,9 +59,25 @@ $ ->
 
   toggleButtonView.on 'toggled', (toggled) ->
     socket.emit 'controlled', {
-      id: 0
+      id: 24
       command: if toggled then 'on' else 'off'
     }
+
+  parent.addColumn toggleButtonView, 'Loft'
+
+  #-------------------------
+  
+  toggleButtonView = new ToggleButtonView
+    initial: false
+
+  toggleButtonView.on 'toggled', (toggled) ->
+    socket.emit 'controlled', {
+      id: 18
+      command: if toggled then 'on' else 'off'
+    }
+
+  socket.on 'changed/18', (data) ->
+    toggleButtonView.toggleForceSilent data.isOn
 
   parent.addColumn toggleButtonView, 'Hallway'
 
