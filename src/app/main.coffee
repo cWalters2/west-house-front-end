@@ -66,6 +66,45 @@ $ ->
   parent.addColumn toggleButtonView, 'Loft'
 
   #-------------------------
+
+  toggleButtonView = new ToggleButtonView
+    initial: false
+
+  toggleButtonView.on 'toggled', (toggled) ->
+    socket.emit 'controlled', {
+      id: 23
+      command: if toggled then 'on' else 'off'
+    }
+
+  parent.addColumn toggleButtonView, 'Dining Dimmer'
+
+  #-------------------------
+
+  toggleButtonView = new ToggleButtonView
+    initial: false
+
+  toggleButtonView.on 'toggled', (toggled) ->
+    socket.emit 'controlled', {
+      id: 16
+      command: if toggled then 'on' else 'off'
+    }
+
+  parent.addColumn toggleButtonView, 'Stairs'
+
+  #------------------------
+
+  toggleButtonView = new ToggleButtonView
+    initial: false
+
+  toggleButtonView.on 'toggled', (toggled) ->
+    socket.emit 'controlled', {
+      id: 17
+      command: if toggled then 'on' else 'off'
+    }
+
+  parent.addColumn toggleButtonView, 'West Entry'
+
+  #-------------------------
   
   toggleButtonView = new ToggleButtonView
     initial: false
@@ -80,5 +119,83 @@ $ ->
     toggleButtonView.toggleForceSilent data.isOn
 
   parent.addColumn toggleButtonView, 'Hallway'
+
+  #-------------------------
+
+  toggleButtonView = new ToggleButtonView
+    initial: false
+
+  toggleButtonView.on 'toggled', (toggled) ->
+    socket.emit 'controlled', {
+      id: 20
+      command: if toggled then 'on' else 'off'
+    }
+
+  parent.addColumn toggleButtonView, 'Living Dimmer'
+
+  #-------------------------
+
+  toggleButtonView = new ToggleButtonView
+    initial: false
+
+  toggleButtonView.on 'toggled', (toggled) ->
+    socket.emit 'controlled', {
+      id: 72
+      command: if toggled then 'on' else 'off'
+    }
+
+  parent.addColumn toggleButtonView, 'Bathroom'
+
+  #-------------------------
+
+  toggleButtonView = new ToggleButtonView
+    initial: false
+
+  toggleButtonView.on 'toggled', (toggled) ->
+    socket.emit 'controlled', {
+      id: 73
+      command: if toggled then 'on' else 'off'
+    }
+
+  parent.addColumn toggleButtonView, 'Bathroom Mirror'
+
+  #-------------------------
+
+  toggleButtonView = new ToggleButtonView
+    initial: false
+
+  toggleButtonView.on 'toggled', (toggled) ->
+    socket.emit 'controlled', {
+      id: 22
+      command: if toggled then 'on' else 'off'
+    }
+
+  parent.addColumn toggleButtonView, 'West Flood'
+
+  #-------------------------
+
+  toggleButtonView = new ToggleButtonView
+    initial: false
+
+  toggleButtonView.on 'toggled', (toggled) ->
+    socket.emit 'controlled', {
+      id: 71
+      command: if toggled then 'on' else 'off'
+    }
+
+  parent.addColumn toggleButtonView, 'Garage Interior'
+
+  #-------------------------
+
+  toggleButtonView = new ToggleButtonView
+    initial: false
+
+  toggleButtonView.on 'toggled', (toggled) ->
+    socket.emit 'controlled', {
+      id: 73
+      command: if toggled then 'on' else 'off'
+    }
+
+  parent.addColumn toggleButtonView, 'Dining Dimmer'
 
   parent.appendTo $mainView
