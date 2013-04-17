@@ -106,7 +106,4 @@ Feel free to contact Salehen at [salehen.rahman@gmail.com](mailto:salehen.rahman
 
 ## TODO
 
-* refactor the code to allow for a compiled version of the front-end
-    * this would mean finding 
 * refactor websockets protocol
-* avoid using a hard-coded string to the origin's URL
