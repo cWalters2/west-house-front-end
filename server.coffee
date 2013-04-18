@@ -40,19 +40,7 @@ app.configure ->
   })
   app.use app.router
 
-watchr.watch
-  paths: [ srcFolder, publicFolder ]
-  listeners:
-    change: ->
-      emitter.emit 'filechange'
-
 io.sockets.on 'connection', (socket) ->
-  emitter.once 'filechange', ->
-    console.log 'Fired.'
-    try
-      socket.emit 'filechange', { m: 1 }
-    catch e
-
   socket.on 'controlled', (data) ->
     console.log data.command
     requestBody = querystring.stringify

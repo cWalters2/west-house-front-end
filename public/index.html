@@ -32,10 +32,6 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
     var socket = io.connect('http://' + window.location.host);
-    socket.on('filechange', function () {
-      document.location.reload(true);
-    });
-    </script>
     <script src="js/require.js"></script>
     <script>
     require.config({
