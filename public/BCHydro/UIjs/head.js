@@ -1,6 +1,8 @@
 var h = 768;
 var w = 1024;
 var svg;
+var temp;
+var icon;
 
 var currentTime = new Date();
 var month=new Array();
@@ -18,7 +20,26 @@ var month=new Array();
     month[11]="Dec";
 	
 
-drawTop("body");
+//drawTop("body");
+$(function () {
+	var deferred = $.ajax({
+    	url: 'http://free.worldweatheronline.com/feed/weather.ashx?key=80ade92738205915131203&q=burnaby,canada&num_of_days=1&format=json',
+    	dataType: 'jsonp',
+    	//async: false,
+    	contentType: "application/json",
+	});
+
+	deferred.success(function (data) {
+		getWeatherData(data);
+		drawTop("div");
+  	});
+
+  	function getWeatherData(data){
+  		temp = data.data.current_condition[0].temp_C;
+  		icon = data.data.current_condition[0].weatherIconUrl[0].value;
+  		console.log(temp + " " + icon);
+  	} 
+});
 
 function drawTop(dom) {
     svg = d3.select(dom)
@@ -40,6 +61,21 @@ function drawTop(dom) {
         .attr("font-size", h*5/147)
         .attr("font-family", "sans-serif")
         .attr("fill", "#ffffff");
+
+		svg.append("image")
+			    .attr("x", w*32/198)
+			    .attr("y", h/145)
+		        .attr("width", w*6/198)
+		        .attr("height", h*6/145)
+		        .attr("xlink:href", icon);
+	
+			svg.append("text")
+				.attr("x", w*38/198)
+				.attr("y", h*6/145)
+		        .attr("font-size", h*4/145)
+		        .attr("font-family", "sans-serif")
+				.style("fill", "#ffffff")
+				.text(temp+"°C");
         
     var datestring = month[currentTime.getMonth()] + " " + currentTime.getDate() + ", " + currentTime.getFullYear();
     svg.append("svg:text")
