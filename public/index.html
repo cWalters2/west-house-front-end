@@ -3,10 +3,14 @@
     <meta>
     <title>ALIS</title>
     <link rel="stylesheet" href="styles/style.css">
+	  <script type="text/javascript" src="d3/d3.v2.js"></script>
   </head>
-  <body>
-
-    <div id="main-view" class="main-view"></div>
+  <body bgcolor="#000000">
+  	<script type="text/javascript" src="UIjs/clock.js"></script>
+  	<script type="text/javascript" src="UIjs/head.js"></script>
+	 <div style="background-color:#000; height:626px; width: 1024px;">
+    <div style="background-color:#666; height:622px; width: 1024px;" id="main-view" class="main-view"></div>
+</div>
     
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -29,5 +33,21 @@
     });
     require(["app/main"], function () {});
     </script>
+	<div style="background-color:#333333; width: 1024px;">
+	<table>
+	  <tbody>
+	    <tr>
+	      <td style="vertical-align: top;"><a href="/statistics-visualization/index.html"><img style="width: 120px; height: 100px;" alt="Dashboard" src="UI-images/dashboard.png"><br>
+	      </td>
+	      <td style="vertical-align: top;"><br>
+	      </td>
+	      <td style="vertical-align: top;"><a href="index.html"><img style="width: 120px; height: 100px;" alt="Control" src="UI-images/control-selected.png"><br>
+	      </td>
+	      <td style="vertical-align: top;"><a href="/treeVis/index.html"><img style="width: 120px; height: 100px;" alt="Control" src="UI-images/overview.png"><br>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
+</div>
   </body>
 </html>
