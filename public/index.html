@@ -17,10 +17,22 @@
             <div class="inner">
 
               <!-- Alright, so this is where you would add the switch. -->
-              <div class="placeholder" data-type="toggle"></div>
+              <div class="placeholder" data-type="dimmer"></div>
 
               <!-- Optionally, you can also add the label here. -->
               <p>Living Dimmer</p>
+
+            </div>
+          </div>
+
+          <div class="column widget-column">
+            <div class="inner">
+
+              <!-- Alright, so this is where you would add the switch. -->
+              <div class="placeholder" data-type="toggle"></div>
+
+              <!-- Optionally, you can also add the label here. -->
+              <p>Foo Switch</p>
 
             </div>
           </div>
@@ -32,6 +44,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
     var socket = io.connect('http://' + window.location.host);
+    </script>
     <script src="js/require.js"></script>
     <script>
     require.config({

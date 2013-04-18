@@ -22,3 +22,9 @@ $ ->
 
       $placeholder.after toggleButton.$el
       $placeholder.remove()
+    else if type is 'dimmer'
+      dimmer = new SliderView
+
+      $placeholder.after dimmer.$el
+      $placeholder.remove()
+      
