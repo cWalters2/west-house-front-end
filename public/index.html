@@ -6,12 +6,12 @@
 	  <script type="text/javascript" src="d3/d3.v2.js"></script>
   </head>
   <body bgcolor="#000000">
-	  <script type="text/javascript" src="UIjs/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="UIjs/jquery-1.9.0.min.js"></script>
   	<script type="text/javascript" src="UIjs/clock.js"></script>
   	<script type="text/javascript" src="UIjs/head.js"></script>
-	<script type="text/javascript" src="control-side/js/control.js"></script>
 	<div class="header"> </div>
-    <div class= "control" style="width: 100%; overflow: hidden;">
+	
+    <div style="width: 100%; overflow: hidden;">
       <div style="background-color:#666; height:622px; width: 614px; float:left" id="main-view" class="main-view">
         
         <!-- An example light switch. -->
@@ -41,10 +41,9 @@
           </div>
         </div>
       </div>
-	  
-	  <div class="control-side" style="margin-left: 615px; width:410px;"></div>
-  </div>
-	  
+	<div class="control" style="margin-left: 615px; width:410px;"></div>  
+</div>
+	<script type="text/javascript" src="UIjs/control.js"></script>	  
     
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -64,6 +63,7 @@
     });
     require(["app/main"], function () {});
     </script>
+
 	<div style="background-image: url(UI-images/bg.png);  width: 1024px;">
 	<table style="width: 1023px; height: 114px;">
 	  <tbody>

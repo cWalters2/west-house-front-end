@@ -15,14 +15,12 @@ var lofttemp = 22;
 drawControls(".control");
 
 function drawControls(dom) {
-	var h = 622;
-	var w = 410;
     svg = d3.select(dom)
         .append("svg")
         .attr("width", w)
         .attr("height", h)
 		.style("background", "#77787a");
-		
+		console.log("run");
 	drawButtons();
 	
 	svg.append("line")
@@ -102,7 +100,7 @@ function drawTextbox(){
 		.attr("y", 370)
 		.attr("width", 40)
 		.attr("height", 25)
-		.attr("xlink:href", "./images/up.png") 
+		.attr("xlink:href", "./UI-images/up.png") 
 
 	livingUpBtn.on("mouseup", function(evt){
 		livingtemp++;
@@ -116,7 +114,7 @@ function drawTextbox(){
 		.attr("y", 395)
 		.attr("width", 40)
 		.attr("height", 25)
-		.attr("xlink:href", "./images/down.png") 
+		.attr("xlink:href", "./UI-images/down.png") 
 
 	livingDownBtn.on("mouseup", function(evt){
 			livingtemp--;
@@ -130,7 +128,7 @@ function drawTextbox(){
 		.attr("y", 370)
 		.attr("width", 40)
 		.attr("height", 25)
-		.attr("xlink:href", "./images/up.png") 
+		.attr("xlink:href", "./UI-images/up.png") 
 
 	loftUpBtn.on("mouseup", function(evt){
 		lofttemp++;
@@ -144,7 +142,7 @@ function drawTextbox(){
 		.attr("y", 395)
 		.attr("width", 40)
 		.attr("height", 25)
-		.attr("xlink:href", "./images/down.png") 
+		.attr("xlink:href", "./UI-images/down.png") 
 		
 	loftDownBtn.on("mouseup", function(evt){
 		lofttemp--;

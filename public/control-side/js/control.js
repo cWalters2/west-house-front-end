@@ -15,14 +15,13 @@ var lofttemp = 22;
 drawControls();
 
 function drawControls() {
-	var svg;
-	svg = d3.select("control-side")//.select(".control-side")
+	svg = d3.select(".control-side")
         .append("svg")
         .attr("width", w)
         .attr("height", h)
 		.style("background", "#77787a");
 
-	//console.log(svg);
+	console.log("sv");
 		
 	drawButtons();
 	
