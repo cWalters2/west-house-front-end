@@ -9,9 +9,10 @@
 	  <script type="text/javascript" src="UIjs/jquery-1.9.0.min.js"></script>
   	<script type="text/javascript" src="UIjs/clock.js"></script>
   	<script type="text/javascript" src="UIjs/head.js"></script>
+	<script type="text/javascript" src="control-side/js/control.js"></script>
 	<div class="header"> </div>
-    <div style="background-color:#000; height:626px; width: 1024px;">
-      <div style="background-color:#666; height:622px; width: 1024px;" id="main-view" class="main-view">
+    <div class= "control" style="width: 100%; overflow: hidden;">
+      <div style="background-color:#666; height:622px; width: 614px; float:left" id="main-view" class="main-view">
         
         <!-- An example light switch. -->
         <div class="lights">
@@ -39,9 +40,11 @@
             </div>
           </div>
         </div>
-      
       </div>
-    </div>
+	  
+	  <div class="control-side" style="margin-left: 615px; width:410px;"></div>
+  </div>
+	  
     
     <script src="/socket.io/socket.io.js"></script>
     <script>
