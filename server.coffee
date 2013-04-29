@@ -40,11 +40,17 @@ app.configure ->
   })
   app.use app.router
 
+deviceIds = {}
+
 io.sockets.on 'connection', (socket) ->
+  socket.on 'requested', (data) ->
+    deviceIds[data.id] = true
+
   socket.on 'controlled', (data) ->
-    console.log data.command
     requestBody = querystring.stringify
       command: if data.command is 'on' then 'on' else 'off'
+
+    console.log data.deviceId
 
     request = http.request {
       host: settings.host
@@ -69,30 +75,30 @@ io.sockets.on 'connection', (socket) ->
     request.end()
 
   setInterval ->
-    element = 18
+    for id of deviceIds
+      console.log id
+      request = http.request {
+        host: settings.host
+        port: settings.port
+        path: "/devices/#{id}"
+        method: "GET"
+      }, (res) ->
+        res.setEncoding 'utf8'
 
-    request = http.request {
-      host: settings.host
-      port: settings.port
-      path: "/devices/#{element}"
-      method: "GET"
-    }, (res) ->
-      res.setEncoding 'utf8'
+        data = ''
 
-      data = ''
+        res.on 'data', (chunk) ->
+          data += chunk
 
-      res.on 'data', (chunk) ->
-        data += chunk
+        res.on 'end', ->
+          try
+            socket.emit "changed/#{id}", {
+              isOn: if parseInt(JSON.parse(data).Status) then on else off
+            }
+          catch e
+            console.log e
 
-      res.on 'end', ->
-        try
-          socket.emit "changed/#{element}", {
-            isOn: if parseInt(JSON.parse(data).Status) then on else off
-          }
-        catch e
-          console.log e
-
-    request.end()
+      request.end()
         
   , 1000
 
